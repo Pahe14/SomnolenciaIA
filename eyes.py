@@ -19,12 +19,12 @@ left_eye_idx = [362, 385, 387, 263, 373, 380]   #puntos ojo izquierdo
 right_eye_idx = [33, 160, 158, 133, 153, 144]   #puntos ojo derecho
 
 def calcular_EAR(ojo):
-    p1, p2, p3, p4, p5, p6 = ojo #puntos de los ojos mediante un array
-    #distancias euclidianas np.linalg.norm()
-    distancia1 = math.sqrt((p2[0]-p6[0])**2 + (p2[1]-p6[1])**2) # p2 -- p6
-    distancia2 = math.sqrt((p3[0]-p5[0])**2 + (p3[1]-p5[1])**2) # p3 -- p5
-    distancia3 = math.sqrt((p1[0]-p4[0])**2 + (p1[1]-p4[1])**2) # p1 -- p4
-
+     # Convertimos la lista de tuplas a un array de numpy para poder operar matemáticamente
+    puntos = np.array(ojo)   
+    # calculando distancias
+    distancia1 = np.linalg.norm(puntos[1] - puntos[5])
+    distancia2 = np.linalg.norm(puntos[2] - puntos[4])
+    distancia3 = np.linalg.norm(puntos[0] - puntos[3])
     EAR = (distancia1 + distancia2) / (2.0 * distancia3)
     return EAR
 
